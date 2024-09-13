@@ -27,8 +27,8 @@ app.Use((context, next) =>
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 //}
 
 app.UseMetricServer(settings => settings.EnableOpenMetrics = false);

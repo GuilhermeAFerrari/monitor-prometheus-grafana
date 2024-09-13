@@ -1,0 +1,28 @@
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: ''
+  smtp_from: ''
+  smtp_auth_username: ''
+  smtp_auth_password: ''
+  smtp_require_tls: false 
+
+route:
+  group_by: ['alert_rules']
+  receiver: 'alert_rules'
+
+receivers:
+- name: 'alert_rules'
+  email_configs: # Replace With Your Data
+  - to: 'r'
+    from: ''
+    smarthost: ''
+    auth_username: ''
+    auth_password: ''
+    require_tls: false
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'dev', 'instance']

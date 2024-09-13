@@ -19,11 +19,11 @@ services:
         version: 1
     image: prometheus-local
     restart: always
-    ports: 
+    ports:
       - 9090:9090
     networks:
       - monitor_api_network
-    volumes: 
+    volumes:
       - './prometheus/data:/data'
   grafana:
     build:
@@ -35,7 +35,7 @@ services:
     restart: always
     ports:
       - 3000:3000
-    networks: 
+    networks:
       - monitor_api_network
   alertmanager:
     image: prom/alertmanager:v0.25.0
@@ -44,7 +44,7 @@ services:
     volumes:
       - ./alertmanager/:/etc/alertmanager/
     command:
-      - '--config.file=/etc/alertmanager/config.yaml'
+      - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
     ports:
       - 9093:9093
